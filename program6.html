@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>student result calculator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #FFF8E1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 12px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: #E65100;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: purple;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #25323b;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #F5F5F5;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2> student result calculator</h2>
+        <input type="text" id="name" placeholder="enter student name">
+        <input type="number" id="m1" placeholder="html score">
+        <input type="number" id="m2" placeholder="css score">
+        <input type="number" id="m3" placeholder="javascript score">
+        <input type="number" id="m4" placeholder="python score">
+        <input type="number" id="m5" placeholder="database score">
+        <button onclick="calculateResult()">
+            calculate result
+        </button>
+        <div id="result">
+            result will be displayed here
+        </div>
+    </div>
+    <script>
+        function calculateResult() {
+            let name =document.getElementById("name").value;
+            let m1 =Number(document.getElementById("m1").value);
+            let m2 =Number(document.getElementById("m2").value);
+            let m3 =Number(document.getElementById("m3").value);
+            let m4 =Number(document.getElementById("m4").value);
+            let m5 =Number(document.getElementById("m5").value);
+            let total=m1+m2+m3+m4+m5;
+            let average=total/5;
+            let grade;
+            if (average>= 90)
+                grade = "A+";
+            else if (average>= 75)
+                grade = "A";
+            else if (average>=60)
+                grade="B";
+            else if(average>=40)
+                grade="c";
+            else
+                grade="F";
+            let result=(average>=40)?"PASS":"FAIL";
+
+            document.getElementById("result").innerHTML=
+            "<h3> student result</h3>"+
+            "<b>name:</b>"+name+"<br><br>"+
+            "<b>total:</b>"+total+"<br><br>"+
+            "<b>average:</b>"+average.toFixed(2)+"<br><br>"+
+            "<b>grade:</b>"+grade+"<br><br>"+
+            "<b>result:</b>"+result;
+            }
+    </script>
+</body>
+</html>
